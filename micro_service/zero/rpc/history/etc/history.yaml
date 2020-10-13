@@ -1,0 +1,12 @@
+Name: history.rpc
+ListenOn: 127.0.0.1:8081
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: history.rpc
+DataSource: root:Wanxinkun2012!@tcp(localhost:3306)/test?parseTime=true
+Table: echo_history
+Cache:
+  - Host: localhost:6379
+Log:
+  Level: error

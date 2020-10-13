@@ -1,0 +1,41 @@
+type EchoRequest struct {
+	Msg string `form:"msg"`
+}
+
+type EchoResponse struct {
+	Msg string `json:"msg"`
+}
+
+type LastEchoResponse struct {
+	Msg      string `json:"msg"`
+	LastEcho string `json:"last_echo"`
+	Times    uint64 `json:"times"`
+}
+
+type GetEchoStatsRequest struct {
+	Msg string `form:"msg"`
+}
+
+type GetEchoStatsResponse struct {
+	Msg      string `json:"msg"`
+	LastEcho string `json:"last_echo"`
+	Times    uint64 `json:"times"`
+}
+
+service zero-api {
+	@server(
+		handler: EchoHandler
+	)
+	get /echo(EchoRequest) returns(EchoResponse)
+
+	@server(
+		handler: LastEchoHandler
+	)
+	get /last_echo() returns(LastEchoResponse)
+
+	@server(
+	    handler: GetEchoHandler
+	)
+	get /echo/stats(GetEchoStatsRequest) returns(GetEchoStatsResponse)
+}
+

@@ -1,0 +1,15 @@
+Name: zero-api
+Host: 0.0.0.0
+Port: 8888
+Echo:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: echo.rpc
+History:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: history.rpc
+Log:
+  Level: error
