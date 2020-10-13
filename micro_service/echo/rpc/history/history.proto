@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package history;
+
+message AddRequest {
+    string msg = 1;
+}
+
+message AddResponse {
+    bool ok = 1;
+}
+
+message LastRequest {}
+message LastRequestResponse {
+    string msg = 1;
+    uint64 times = 2;
+    string lastEcho = 3;
+
+
+}
+
+service History {
+    rpc Add (AddRequest) returns (AddResponse);
+    rpc Last(LastRequest) returns (LastRequestResponse);
+}

@@ -1,0 +1,34 @@
+info(
+	title: echo服务
+	desc:  echo服务
+	author: Theodoree
+	email: a824696468@gmail.com
+)
+
+type echoRequest struct {
+	msg string `from:"msg"`
+}
+
+type echoResponse struct {
+	msg string `json:"msg"`
+}
+
+type lastEchoResponse struct {
+	lastEcho string `json:"last_echo"`
+	word     string `json:"word"`
+	times    uint64 `json:"times"`
+}
+
+service echo-api {
+	@server(
+		handler: EchoHandler
+	)
+	get /echo(echoRequest) returns(echoResponse)
+
+	@server(
+	    handler: LastEchoHandler
+	)
+	get /echo/last() returns(lastEchoResponse)
+
+}
+
